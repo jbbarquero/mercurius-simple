@@ -31,11 +31,11 @@ public class Type {
 	@Size(max = 150)
 	private String description;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(
-		name = "TYPE_ADDRESS",
-		joinColumns = @JoinColumn(name = "TYPE_ID"),
-		inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
-	)
-	private Set<Address> addresses = new HashSet<>();
+//	@ManyToMany(cascade = CascadeType.PERSIST)
+//	@JoinTable(
+//		name = "TYPE_ADDRESS",
+//		joinColumns = @JoinColumn(name = "TYPE_ID"),
+//		inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
+//	)
+//	private Set<Address> addresses = new HashSet<>();
 }
