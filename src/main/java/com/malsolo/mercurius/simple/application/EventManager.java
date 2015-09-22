@@ -2,6 +2,7 @@ package com.malsolo.mercurius.simple.application;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.malsolo.mercurius.simple.domain.Event;
@@ -12,6 +13,7 @@ public class EventManager {
 	
 	private final EventRepository eventRepository;
 
+	@Autowired
 	public EventManager(EventRepository eventRepository) {
 		this.eventRepository = eventRepository;
 	}
