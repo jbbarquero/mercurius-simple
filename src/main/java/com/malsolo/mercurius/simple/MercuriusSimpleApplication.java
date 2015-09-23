@@ -2,6 +2,7 @@ package com.malsolo.mercurius.simple;
 
 import java.util.Date;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,9 +18,9 @@ public class MercuriusSimpleApplication {
 	@Bean
 	InitializingBean seedDatabase(EventRepository repository) {
 		return () -> {
-			repository.save(new Event(null, 1L, "1", "data 1", new Date(), null, null, null));
-			repository.save(new Event(null, 1L, "2", "data 2", new Date(), null, null, null));
-			repository.save(new Event(null, 2L, "3", "data 3", new Date(), null, null, null));
+			repository.save(new Event(null, 1L, "1", "data 1", new DateTime(2015, 9, 1, 0, 0).toDate(), new Date(), null, null));
+			repository.save(new Event(null, 1L, "2", "data 2", new DateTime(2015, 9, 2, 12, 0).toDate(), new Date(), null, null));
+			repository.save(new Event(null, 2L, "3", "data 3", new DateTime(2015, 9, 3, 23, 59).toDate(), new Date(), null, null));
 		};
 	}
 	

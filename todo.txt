@@ -1,0 +1,2 @@
+· How to know the existing dependencies from the parent?
+· Review stack trace when running with debug
