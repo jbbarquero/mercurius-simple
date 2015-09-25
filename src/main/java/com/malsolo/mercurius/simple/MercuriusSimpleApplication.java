@@ -44,14 +44,17 @@ public class MercuriusSimpleApplication {
 
 	@Autowired
 	void setEnvironment(Environment env) {
-		System.err.printf("setting environment: %s%n",
-				env.getProperty("configuration.projectName"));
+		System.err.printf("setting environment: %s: %s%n",
+				env.getProperty("configuration.projectName"),
+				env.getProperty("configuration.projectDescription")
+				);
+		System.err.printf("ENVIRONMENT: %s%n", env.getProperty("app.environment"));
 	}
 
 	@Autowired
 	void setConfigurationProjectProperties(ConfigurationProjectProperties cp) {
-		System.err.printf("configurationProjectProperties.projectName = %s%n",
-				cp.getProjectName());
+		System.err.printf("configurationProjectProperties.projectName = %s: %s%n",
+				cp.getProjectName(), cp.getProjectDescription());
 	}
 
 	public static void main(String[] args) {

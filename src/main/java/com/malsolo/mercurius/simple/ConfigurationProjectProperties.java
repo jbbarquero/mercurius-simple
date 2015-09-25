@@ -14,5 +14,8 @@ public class ConfigurationProjectProperties {
 	
 	@NotNull
 	private String projectName;
+	
+	@NotNull
+	private String projectDescription;
 
 }
