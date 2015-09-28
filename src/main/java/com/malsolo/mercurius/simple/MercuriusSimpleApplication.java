@@ -58,7 +58,11 @@ public class MercuriusSimpleApplication {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(MercuriusSimpleApplication.class, args);
+//		SpringApplication.run(MercuriusSimpleApplication.class, args);
+		SpringApplication application = new SpringApplication(MercuriusSimpleApplication.class);
+//		application.setWebEnvironment(false);
+		application.run(args);
+//		System.out.println(">>>>> RUNNING!");
 	}
 
 	// @Bean
