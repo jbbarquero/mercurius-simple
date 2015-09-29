@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.metrics.rich.InMemoryRichGaugeRepository;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 
 import com.malsolo.mercurius.simple.domain.Event;
@@ -46,23 +48,31 @@ public class MercuriusSimpleApplication {
 	void setEnvironment(Environment env) {
 		System.err.printf("setting environment: %s: %s%n",
 				env.getProperty("configuration.projectName"),
-				env.getProperty("configuration.projectDescription")
-				);
-		System.err.printf("ENVIRONMENT: %s%n", env.getProperty("app.environment"));
+				env.getProperty("configuration.projectDescription"));
+		System.err.printf("ENVIRONMENT: %s%n",
+				env.getProperty("app.environment"));
 	}
 
 	@Autowired
 	void setConfigurationProjectProperties(ConfigurationProjectProperties cp) {
-		System.err.printf("configurationProjectProperties.projectName = %s: %s%n",
+		System.err.printf(
+				"configurationProjectProperties.projectName = %s: %s%n",
 				cp.getProjectName(), cp.getProjectDescription());
 	}
 
+	@Bean
+	@Primary
+	public InMemoryRichGaugeRepository inMemoryRichGaugeRepository() {
+		return new InMemoryRichGaugeRepository();
+	}
+
 	public static void main(String[] args) {
-//		SpringApplication.run(MercuriusSimpleApplication.class, args);
-		SpringApplication application = new SpringApplication(MercuriusSimpleApplication.class);
-//		application.setWebEnvironment(false);
+		// SpringApplication.run(MercuriusSimpleApplication.class, args);
+		SpringApplication application = new SpringApplication(
+				MercuriusSimpleApplication.class);
+		// application.setWebEnvironment(false);
 		application.run(args);
-//		System.out.println(">>>>> RUNNING!");
+		// System.out.println(">>>>> RUNNING!");
 	}
 
 	// @Bean
